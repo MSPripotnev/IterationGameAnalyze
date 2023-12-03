@@ -1,3 +1,6 @@
+using System;
+using System.Windows.Forms;
+
 namespace IterationGame {
 	internal static class Program {
 		/// <summary>
@@ -5,10 +8,10 @@ namespace IterationGame {
 		/// </summary>
 		[STAThread]
 		static void Main() {
-			// To customize application configuration such as set high DPI settings or default font,
-			// see https://aka.ms/applicationconfiguration.
-			ApplicationConfiguration.Initialize();
-            Application.Run(new Form());
+			Application.SetHighDpiMode(HighDpiMode.SystemAware);
+			Application.EnableVisualStyles();
+			Application.SetCompatibleTextRenderingDefault(false);
+			Application.Run(new Form());
 		}
 	}
 }

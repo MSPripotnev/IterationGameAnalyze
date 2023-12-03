@@ -1,6 +1,8 @@
 using System;
 using System.Linq;
-using System.Numerics;
+using System.Windows.Forms;
+using System.IO;
+using System.Drawing;
 using System.Text;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -61,7 +63,7 @@ namespace IterationGame {
 					resultGrid[iteration + 1, gainsStartPosForPlayer + i] = new SourceGrid.Cells.Cell(game.Iterations[iteration - 1].PlayerGains[player][i]);
 				resultGrid[iteration + 1, 3 + game.StrategyCount.Sum() + player] = new SourceGrid.Cells.Cell(
 					Math.Round(game.Iterations[iteration - 1].PlayerGains[player].Max() / iteration, 4));
-				}
+			}
 		}
 
 		private void MatrixNUD_ValueChanged(object sender, EventArgs e) {
@@ -163,11 +165,11 @@ namespace IterationGame {
 		private void saveFileB_Click(object sender, EventArgs e) {
 			if (sFD.ShowDialog() == DialogResult.OK) {
 				if (Path.GetExtension(sFD.FileName) == ".csv") {
-				var csv = new StringBuilder();
-				for (int i = 0; i < verticalMatrixNUD.Value; i++) {
-					string newLine = "";
+					var csv = new StringBuilder();
+					for (int i = 0; i < verticalMatrixNUD.Value; i++) {
+						string newLine = "";
 						for (int j = 0; j < horizontalMatrixNUD.Value; j++)
-						newLine += $"{matrixInputGrid[i, j]} ";
+							newLine += $"{matrixInputGrid[i, j]} ";
 						csv.AppendLine(newLine);
 					}
 					File.WriteAllText(sFD.FileName, csv.ToString());
@@ -177,11 +179,11 @@ namespace IterationGame {
 						string newLine = "";
 						for (int j = 0; j < resultGrid.ColumnsCount; j++)
 							newLine += $"{resultGrid[i, j]}\t";
-					csv.AppendLine(newLine);
+						csv.AppendLine(newLine);
+					}
+					File.WriteAllText(sFD.FileName, csv.ToString());
 				}
-				File.WriteAllText(sFD.FileName, csv.ToString());
 			}
 		}
 	}
-}
 }

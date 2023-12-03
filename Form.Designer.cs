@@ -1,4 +1,9 @@
-﻿namespace IterationGame {
+﻿using System;
+using System.Drawing;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace IterationGame {
 	partial class Form {
 		/// <summary>
 		///  Required designer variable.
