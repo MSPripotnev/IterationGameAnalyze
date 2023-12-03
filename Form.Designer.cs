@@ -477,7 +477,7 @@
 			// sFD
 			// 
 			sFD.DefaultExt = "csv";
-			sFD.Filter = "\"CSV files|*.csv|Все файлы|*.*\"";
+			sFD.Filter = "\"CSV input file|*.csv|TXT output file|*.txt|Все файлы|*.*\"";
 			// 
 			// Form
 			// 

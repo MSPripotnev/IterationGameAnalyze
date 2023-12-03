@@ -162,16 +162,26 @@ namespace IterationGame {
 
 		private void saveFileB_Click(object sender, EventArgs e) {
 			if (sFD.ShowDialog() == DialogResult.OK) {
+				if (Path.GetExtension(sFD.FileName) == ".csv") {
 				var csv = new StringBuilder();
 				for (int i = 0; i < verticalMatrixNUD.Value; i++) {
 					string newLine = "";
-					for (int j = 0; j < horizontalMatrixNUD.Value; j++) {
+						for (int j = 0; j < horizontalMatrixNUD.Value; j++)
 						newLine += $"{matrixInputGrid[i, j]} ";
+						csv.AppendLine(newLine);
 					}
+					File.WriteAllText(sFD.FileName, csv.ToString());
+				} else if (Path.GetExtension(sFD.FileName) == ".txt") {
+					var csv = new StringBuilder();
+					for (int i = 2; i < resultGrid.RowsCount; i++) {
+						string newLine = "";
+						for (int j = 0; j < resultGrid.ColumnsCount; j++)
+							newLine += $"{resultGrid[i, j]}\t";
 					csv.AppendLine(newLine);
 				}
 				File.WriteAllText(sFD.FileName, csv.ToString());
 			}
 		}
 	}
+}
 }
