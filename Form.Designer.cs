@@ -262,6 +262,7 @@ namespace IterationGame {
 			iterationsCB.TabIndex = 0;
 			iterationsCB.Text = "20";
 			iterationsCB.SelectedIndexChanged += iterationsCB_SelectedIndexChanged;
+			iterationsCB.TextChanged += iterationsCB_SelectedIndexChanged;
 			// 
 			// playB
 			// 

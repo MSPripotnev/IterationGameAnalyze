@@ -111,7 +111,8 @@ namespace IterationGame {
 				game.PlayIteration();
 				AddIteration(game);
 			}
-			resultGrid.AutoSizeCells();
+			if (N < 10000)
+				resultGrid.AutoSizeCells();
 			maxminL.Text = Math.Round(game.MaxMin).ToString();
 			minmaxL.Text = Math.Round(game.MinMax).ToString();
 			gamePriceL.Text = $"({Math.Round(game.GamePrice[0], 2)}; {Math.Round(game.GamePrice[1], 2)})";
@@ -137,10 +138,11 @@ namespace IterationGame {
 			chart.ChartAreas[0].AxisX.MinorGrid.Enabled = false;
 			chart.Legends.Add(new Legend());
 			chart.Update();
+			game.Iterations.Clear();
 		}
 
 		private void iterationsCB_SelectedIndexChanged(object sender, EventArgs e) {
-			N = int.Parse(iterationsCB.Text);
+			int.TryParse(iterationsCB.Text, out N);
 		}
 
 		private void openFileB_Click(object sender, EventArgs e) {
