@@ -157,6 +157,8 @@ namespace IterationGame {
 							columns = text[i].Trim().Split('\t');
 						verticalMatrixNUD.Value = columns.Length;
 						for (int j = 0; j < columns.Length; j++) {
+							if (matrixInputGrid[i, j] != null)
+								matrixInputGrid[i, j].Value = double.Parse(columns[j]);
 							matrixInputGrid[i, j] = new SourceGrid.Cells.Cell(double.Parse(columns[j]), typeof(double));
 						}
 					}
